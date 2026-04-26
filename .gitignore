@@ -1,0 +1,9 @@
+# Vault internal files
+netflix_pipeline_contexto.md
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
