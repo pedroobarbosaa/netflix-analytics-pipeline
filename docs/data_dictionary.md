@@ -207,6 +207,29 @@ Data for the scatter plot comparing popularity (total ratings) vs quality (avg r
 
 ---
 
+### `vw_belief_analysis`
+
+Compares what users predicted they would rate a movie, what the system predicted, and what they actually rated after watching. Only includes records where `isSeen = 1` and the user submitted a real rating.
+
+| Column | Type | Description |
+|---|---|---|
+| `user_id` | INT64 | Anonymous user identifier |
+| `movie_id` | INT64 | Movie identifier — foreign key to `dim_movies` |
+| `title` | STRING | Movie title |
+| `genres` | STRING | Pipe-separated genres |
+| `release_year` | INT64 | Release year |
+| `actual_rating` | FLOAT64 | Real rating given by the user after watching (0.5–5.0) |
+| `user_predicted_rating` | FLOAT64 | Rating the user predicted before watching (0.5–5.0) |
+| `system_predicted_rating` | FLOAT64 | Rating predicted by the MovieLens system (0.5–5.0) |
+| `user_certainty` | INT64 | User's confidence in their own prediction (1–5) |
+| `user_prediction_error` | FLOAT64 | Absolute error: `ABS(user_predicted - actual)` |
+| `system_prediction_error` | FLOAT64 | Absolute error: `ABS(system_predicted - actual)` |
+| `more_accurate` | STRING | Who predicted closer to the real rating: `user`, `system`, `tie`, or `no_*_prediction` |
+| `surprise_type` | STRING | `positive_surprise` (liked more than expected), `disappointment`, or `as_expected` |
+| `recorded_at` | TIMESTAMP | When the belief record was captured |
+
+---
+
 ### `vw_user_activity`
 
 Behavioral profile aggregated per user.

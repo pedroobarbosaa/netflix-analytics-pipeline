@@ -89,6 +89,7 @@ Fact table built via `UNION ALL` of two raw sources. Techniques used: `SAFE_CAST
 | `vw_ratings_heatmap` | Rating volume by month/year | EXTRACT, FORMAT_TIMESTAMP |
 | `vw_scatter_popularity_vs_quality` | Popularity vs quality scatter data | Filter on vw_movies_kpi |
 | `vw_user_activity` | Behavioral profile per user | GROUP BY aggregations |
+| `vw_belief_analysis` | Predicted vs actual ratings — user vs system accuracy | SAFE_CAST, ABS, CASE WHEN, JOIN |
 
 ---
 
