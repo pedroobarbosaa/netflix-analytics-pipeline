@@ -140,7 +140,8 @@ netflix-analytics-pipeline/
 ├── dashboard/
 │   └── screenshots/
 ├── docs/
-│   └── architecture.md
+│   ├── architecture.md
+│   └── data_dictionary.md  # Column-level docs for all tables and views
 └── README.md
 ```
 
@@ -220,6 +221,10 @@ This project runs entirely within GCP's free tier:
 - **10 GB of active storage** — free
 
 No charges expected for a dataset of this size.
+
+---
+
+For column-level documentation of all tables and views, see [`docs/data_dictionary.md`](docs/data_dictionary.md).
 
 ---
 
