@@ -1,9 +1,21 @@
 # Vault internal files
 netflix_pipeline_contexto.md
 
+# Raw data — never commit CSV files to the repo
+data/
+
+# GCP credentials — never commit service account keys
+*.json
+service-account*
+
 # OS
 .DS_Store
 Thumbs.db
 
 # Editor
 .vscode/
+
+# Python
+__pycache__/
+*.pyc
+.env

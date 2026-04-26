@@ -122,6 +122,9 @@ Access at `http://localhost:3000`.
 
 ```
 netflix-analytics-pipeline/
+├── pipeline/
+│   ├── ingest.py           # Uploads local CSVs to GCS bronze layer
+│   └── requirements.txt
 ├── sql/
 │   ├── 1_raw/
 │   │   └── create_external_tables.sql   # External tables pointing to GCS CSVs
@@ -155,12 +158,23 @@ netflix-analytics-pipeline/
 
 **1. Upload CSVs to GCS**
 
-Create a bucket and upload all CSV files to the `bronze/` prefix:
+Place your CSV files inside a `data/` folder and run the ingest script:
+
+```bash
+pip install -r pipeline/requirements.txt
+python pipeline/ingest.py --data-dir ./data --credentials ./service-account.json
 ```
-gs://your-bucket/bronze/movies.csv
-gs://your-bucket/bronze/user_rating_history.csv
-...
-```
+
+The script maps each local file to the correct GCS destination automatically:
+
+| Local file | GCS destination |
+|---|---|
+| `movies.csv` | `bronze/movies.csv` |
+| `user_rating_history.csv` | `bronze/user_rating_history.csv` |
+| `user_additional_rating.csv` | `bronze/ratings_for_additional_users.csv` |
+| `user_recommendation_history.csv` | `bronze/user_recommendation_history.csv` |
+| `movie_elicitation_set.csv` | `bronze/movie_elicitation_set.csv` |
+| `belief_data.csv` | `bronze/belief_data.csv` |
 
 **2. Create the raw layer (External Tables)**
 
